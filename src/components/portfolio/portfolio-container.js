@@ -10,11 +10,11 @@ export default class portfolioContainer extends Component {
   }
 
   portfolioItems() {
-    const data = ["Upper Case Printing", "Freedom Mailing Services", "Point", "DOMO"];
+    const data = ["Upper Case Printing", "Freedom Mailing Services", "Point Pest Control", "DOMO"];
 
     return data.map(item => {
-      return <PortfolioItem />
-    })
+      return <PortfolioItem title={item} />;
+    });
   }
 
   render () {
