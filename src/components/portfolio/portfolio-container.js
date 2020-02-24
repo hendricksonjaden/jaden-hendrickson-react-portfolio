@@ -8,6 +8,7 @@ export default class portfolioContainer extends Component {
 
     this.state = {
       pageTitle: "Welcome to my portfolio",
+      isLoading: false,
       data: [
       {title: "Upper Case Printing", category: "eCommerce" },
       {title: "Freedom Mailing Services", category: "Scheduling" },
@@ -34,6 +35,9 @@ export default class portfolioContainer extends Component {
   }
 
   render () {
+    if (this.state.isLoading) {
+      return <div>Loading...</div>;
+    }
     return (
       <div>
         <h2>{this.state.pageTitle}</h2>
@@ -54,3 +58,12 @@ export default class portfolioContainer extends Component {
     ); 
   }
 }
+
+
+
+
+
+
+
+
+
