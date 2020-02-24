@@ -1,6 +1,6 @@
 import React from 'react'; 
 
-export default function(props) {
+export default function PortfolioItems(props) {
   return (
     <div>
       <h3>{props.title}</h3>
