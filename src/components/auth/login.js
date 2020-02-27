@@ -19,7 +19,8 @@ handleChange(event) {
 }
 
 handleSubmit(event) {
-  console.log("Handle submit", event);
+  console.log("Handle submit", this.state.email, this.state.password)
+  event.preventDefault()
 }
 
   render() {
