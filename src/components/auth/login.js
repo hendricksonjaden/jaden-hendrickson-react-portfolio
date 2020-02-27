@@ -42,6 +42,7 @@ handleSubmit(event) {
   }
 })
 .catch(error => {
+  console.log("Some error", error)
   this.setState({
     errorText: "An error occured"
   });
