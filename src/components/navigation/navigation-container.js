@@ -7,7 +7,7 @@ const NavigationComponent = (props) => {
   const dynamicLink = (route, linkText) => {
     return (
       <div className="nav-link-wrapper">
-        <NavLink to="/blog"activeClassName="nav-link-active" >
+        <NavLink to="/blog" activeClassName="nav-link-active">
           Blog
         </NavLink>
       </div>
