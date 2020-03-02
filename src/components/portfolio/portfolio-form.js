@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 export default class PortfolioForm extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class PortfolioForm extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit - this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   buildForm() {
@@ -38,7 +39,17 @@ export default class PortfolioForm extends Component {
   }
 
   handleSubmit(event) {
-    this.buildForm();
+    
+    axios.post (
+      "https://jadenhendrickson.devcamp.space/portfolio/portfolio_items", 
+      this.buildForm(), 
+      { withCredentials: true}
+    ).then(response => {
+      console.log("response", response);
+    }).catch(error => {
+      console.log("portfolio form handleSubmit error", error)
+    })
+
     event.preventDefault();
   }
 
