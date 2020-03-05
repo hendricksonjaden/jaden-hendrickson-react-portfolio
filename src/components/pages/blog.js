@@ -28,17 +28,20 @@ export default class Blog extends Component {
   })
 }
 
+// React v17 and above calls this unsafe.
+// https://reactjs.org/docs/react-component.html#unsafe_componentwillmount 
 componentWillMount() {
   this.getBlogItems()
 }
 
 render() {
+  const blogRecords = this.state.blogItems.map(blogItem => {
+    return <h1 key={blogItem.id}>{blogItem.title}</h1>;
+  })
+
   return (
     <div>
-      <h2>Blog</h2>
-      <div>
-        <Link to="/about-me">Read more about me</Link>
-      </div>
+      {blogRecords}
     </div>
     );
   }
