@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 export default class BlogDetail extends Component {
   constructor(props) {
@@ -8,20 +8,22 @@ export default class BlogDetail extends Component {
     this.state = {
       currentId: this.props.match.params.slug,
       blogItem: {}
-    }
+    };
   }
 
-  getBlogItem(){
-    axios.get(
-      `https://jadenhendrickson.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}`
-    ).then(response => {
-      console.log("response", response.data.portfolio_blog)
-      this.setState({
-        blogItem: response.data.portfolio_blog
+  getBlogItem() {
+    axios
+      .get(
+        `https://jadenhendrickson.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}`
+      )
+      .then(response => {
+        this.setState({
+          blogItem: response.data.portfolio_blog
+        });
       })
-    }).catch(error => {
-      console.log("getBlogItem error", error)
-    })
+      .catch(error => {
+        console.log("getBlogItem error", error);
+      });
   }
 
   componentDidMount() {
@@ -34,13 +36,19 @@ export default class BlogDetail extends Component {
       content,
       featured_image_url,
       blog_status
-    } = this.state.blogItem
+    } = this.state.blogItem;
 
     return (
-      <div>
-        <h1>{title}</h1>
-        <img src={featured_image_url}/>
-        <div>{content}</div>
+      <div className="blog-container">
+        <div className="content-container">
+          <h1>{title}</h1>
+
+          <div className="featured-image-wrapper">
+            <img src={featured_image_url} />
+          </div>
+
+          <div className="content">{content}</div>
+        </div>
       </div>
     );
   }
