@@ -8,7 +8,6 @@ export default class RichTextEditor extends Component {
   constructor(props) {
     super(props);
 
-
     this.state = {
       editorState: EditorState.createEmpty()
     }
@@ -38,3 +37,5 @@ export default class RichTextEditor extends Component {
     )
   }
 }
+
+

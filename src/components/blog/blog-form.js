@@ -33,16 +33,21 @@ export default class BlogForm extends Component {
   }
 
   handleSubmit(event) {
-    axios.post("https://jadenhendrickson.devcamp.space/portfolio/portfolio_blogs", 
+    axios.post(
+      "https://jadenhendrickson.devcamp.space/portfolio/portfolio_blogs", 
       this.buildForm(), 
       { withCredentials: true } 
-    ).then(response => {
-      this.props.handleSuccessfulFormSubmission(response.data.portfolio_blog);
-
+    )
+    .then(response => {
       this.setState({
         title: "",
-        blog_status: ""
+        blog_status: "",
+        content: ""
       });
+
+      this.props.handleSuccessfulFormSubmission(
+        response.data.portfolio_blog
+      );
     })
     .catch(error => {
       console.log("handleSubmit for blog error", error)
