@@ -28,8 +28,14 @@ export default class BlogForm extends Component {
       this.buildForm(), 
       { withCredentials: true } 
     ).then(response => {
-      this.props.handleSuccessfulFormSubmission(response.data);
-    }).catch(error => {
+      this.props.handleSuccessfulFormSubmission(response.data.portfolio_blog);
+
+      this.setState({
+        title: "",
+        blog_status: ""
+      });
+    })
+    .catch(error => {
       console.log("handleSubmit for blog error", error)
     })
 
