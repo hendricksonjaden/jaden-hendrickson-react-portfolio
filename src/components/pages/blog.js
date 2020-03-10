@@ -14,39 +14,44 @@ class Blog extends Component {
       totalCount: 0,
       currentPage: 0,
       isLoading: true,
-      blogModalisOpen: false
+      blogModalIsOpen: false
     };
 
     this.getBlogItems = this.getBlogItems.bind(this);
     this.onScroll = this.onScroll.bind(this);
-    window.addEventListener("scroll", this.onScroll, false)
+    window.addEventListener("scroll", this.onScroll, false);
     this.handleNewBlogClick = this.handleNewBlogClick.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
-    this.handleSuccessfulNewBlogSubmission = this.handleSuccessfulNewBlogSubmission.bind(this);
+    this.handleSuccessfulNewBlogSubmission = this.handleSuccessfulNewBlogSubmission.bind(
+      this
+    );
   }
 
   handleSuccessfulNewBlogSubmission(blog) {
     this.setState({
       blogModalIsOpen: false,
       blogItems: [blog].concat(this.state.blogItems)
-    })
+    });
   }
 
   handleModalClose() {
     this.setState({
-      blogModalisOpen: false
-    })
+      blogModalIsOpen: false
+    });
   }
 
   handleNewBlogClick() {
     this.setState({
-      blogModalisOpen: true
-    })
+      blogModalIsOpen: true
+    });
   }
 
   onScroll() {
-    if (this.state.isLoading || this.state.blogItems.length === this.state.totalCount) {
-      return
+    if (
+      this.state.isLoading ||
+      this.state.blogItems.length === this.state.totalCount
+    ) {
+      return;
     }
 
     if (
@@ -55,21 +60,23 @@ class Blog extends Component {
     ) {
       this.getBlogItems();
     }
-  };
-  
+  }
+
   getBlogItems() {
-    this.setState ({
+    this.setState({
       currentPage: this.state.currentPage + 1
-    })
+    });
 
     axios
-      .get
-        (`https://jadenhendrickson.devcamp.space/portfolio/portfolio_blogs?page=${this
-          .state.currentPage}`, 
-        { withCredentials: true
-        })
+      .get(
+        `https://jadenhendrickson.devcamp.space/portfolio/portfolio_blogs?page=${this
+          .state.currentPage}`,
+        {
+          withCredentials: true
+        }
+      )
       .then(response => {
-        console.log("getting", response)
+        console.log("gettting", response.data);
         this.setState({
           blogItems: this.state.blogItems.concat(response.data.portfolio_blogs),
           totalCount: response.data.meta.total_records,
@@ -89,7 +96,7 @@ class Blog extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.onScroll, false)
+    window.removeEventListener("scroll", this.onScroll, false);
   }
 
   render() {
@@ -99,37 +106,32 @@ class Blog extends Component {
 
     return (
       <div className="blog-container">
-      <BlogModal 
-      handleSuccessfulNewBlogSubmission={
-        this.handleSuccessfulNewBlogSubmission
-      }
-        handleModalClose={this.handleModalClose}
-        modalIsOpen={this.state.blogModalisOpen} 
-      />
+        <BlogModal
+          handleSuccessfulNewBlogSubmission={
+            this.handleSuccessfulNewBlogSubmission
+          }
+          handleModalClose={this.handleModalClose}
+          modalIsOpen={this.state.blogModalIsOpen}
+        />
 
-      {this.props.loggedInStatus === "LOGGED_IN" ? (
-        <div className="new-blog-link">
-          <a onClick={this.handleNewBlogClick}>
-            <FontAwesomeIcon icon="plus-circle" />
-          </a>
-        </div> 
-      ) : null}
+        {this.props.loggedInStatus === "LOGGED_IN" ? (
+          <div className="new-blog-link">
+            <a onClick={this.handleNewBlogClick}>
+              <FontAwesomeIcon icon="plus-circle" />
+            </a>
+          </div>
+        ) : null}
 
-        <div className="content-container">
-          {blogRecords}
-        </div>
+        <div className="content-container">{blogRecords}</div>
 
-        {this.state.isLoading ? ( 
-        <div className="content-loader">
-          <FontAwesomeIcon icon="spinner" spin/>
-        </div>
-        ) : ( 
-          null 
-        )} 
+        {this.state.isLoading ? (
+          <div className="content-loader">
+            <FontAwesomeIcon icon="spinner" spin />
+          </div>
+        ) : null}
       </div>
     );
   }
 }
 
 export default Blog;
-
