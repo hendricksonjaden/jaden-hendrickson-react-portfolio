@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const BlogFeaturedImage = props => {
   if (!props.img) {
@@ -8,8 +8,8 @@ const BlogFeaturedImage = props => {
   return (
     <div className="featured-image-wrapper">
       <img src={props.img} />
-    </div> 
-  )
-}
+    </div>
+  );
+};
 
-export default BlogFeaturedImage
+export default BlogFeaturedImage;
