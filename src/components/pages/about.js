@@ -13,10 +13,21 @@ export default function() {
       }}
     />
     <div className="right-column">
-      "Form ranks you maggots! Pikes in front, archers behing!"
-      "Arise! Arise riders of Theoden! Spears shall be shaken! Spears shall be splintered! 
-      A sword day. A red day. And the sun rises! Ride now! Ride now! Ride! 
-      Ride for ruin and the worlds ending! DEATH!! DEATH!! DEATH!! Forth erolingas!!"
+    When you want a thing bad enough to go out and fight for it,
+To work day and night for it,
+To give up your peace and your sleep and your time for it;
+If only the desire of it makes your aim strong enough never to tire of it;
+If life seems all empty and useless without it,
+And all that you dream and you scheme is about it;
+If gladly you’ll sweat for it, fret for it, plan for it,
+Pray with all your strength for it;
+If you’ll simply go after the thing that you want with all your capacity,
+Strength and sagacity; faith, hope, and confidence, stern pertinacity;
+If neither poverty nor cold nor famish nor gaunt
+Nor sickness of pain to body or brain can turn you away from the aim
+That you want;
+If dogged and grim, you besiege and beset it, you’ll get it!
+[Author unknown]
     </div>
     </div>
   );
